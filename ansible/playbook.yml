@@ -1,7 +1,0 @@
----
-- name: Configure EC2 instance
-  hosts: web
-  become: true
-
-  roles:
-   - webserver

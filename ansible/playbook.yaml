@@ -1,0 +1,16 @@
+---
+- name: Configure EC2 instances
+  hosts: tag_name_terraform_ansible_web
+  become: yes
+
+  tasks:
+   - name: Install Nginx
+     apt:
+      name: nginx
+      state: present
+
+   - name: Start and Enable Nginx
+     service:
+      name: nginx
+      state: started
+      enabled: true
