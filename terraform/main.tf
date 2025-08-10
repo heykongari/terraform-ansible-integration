@@ -38,12 +38,13 @@ resource "aws_security_group" "web_sg" {
 resource "aws_instance" "web" {
     ami = var.ami_id
     instance_type = var.instance_type
-    key_name = "aws-key"
+    key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.web_sg.id]
     associate_public_ip_address = true
 
     tags = {
-      Name = "terraform_ansible_web"
+      Name = "terraform_ansible"
+      OS = "ubuntu"
     }
 }
 
@@ -51,6 +52,6 @@ resource "null_resource" "ansible_provision" {
     depends_on = [ aws_instance.web ]
 
     provisioner "local-exec" {
-        command = "sleep 30 && cd ../ansible && ansible-playbook -i aws_ec2.yaml playbook.yaml"
+        command = "sleep 60 && cd ../ansible && ansible-playbook -i aws_ec2.yaml playbook.yaml"
     }
 }
