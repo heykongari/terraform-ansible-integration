@@ -44,7 +44,8 @@ cd terraform-ansible-integration/terraform/
 terraform init
 terraform apply -auto-approve
 ```
-Ansible commands are provisioned under `local-exec` which makes automation simple. No need to manually run other commands.
+Ansible commands are provisioned under `local-exec` which makes automation simple.
+No need to manually run other commands.
 
 >[!WARNING]
 > Make sure `.pem` file has valid permissions.
